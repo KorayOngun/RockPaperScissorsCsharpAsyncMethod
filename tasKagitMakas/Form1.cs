@@ -90,6 +90,7 @@ namespace tasKagitMakas
                 int tsayi;
                 int ksayi;
                 int msayi;
+                string name;
                 while (play)
                 {
                     foreach (var item in pictureBoxList)
@@ -114,34 +115,65 @@ namespace tasKagitMakas
                         }
                         item.Left = item.Left + i;
                         item.Top = item.Top + j;
-                        if (item.Name.StartsWith("kagit"))
-                        {
-                            var enemy = pictureBoxList.Where(x => x.Left > item.Left && x.Left < item.Left + 35 && x.Top > item.Top && x.Top < item.Top + 35 && x.Name.StartsWith("tas")).FirstOrDefault();
-                            if (enemy != null)
-                            {
-                                enemy.Name = "kagit";
-                                enemy.Image = kagit;
-                            }
-                        }
-                        else if (item.Name.StartsWith("tas"))
-                        {
-                            var enemy = pictureBoxList.Where(x => x.Left > item.Left && x.Left < item.Left + 35 && x.Top > item.Top && x.Top < item.Top + 35 && x.Name.StartsWith("makas")).FirstOrDefault();
-                            if (enemy != null)
-                            {
-                                enemy.Name = "tas";
-                                enemy.Image = tas;
-                            }
-                        }
-                        else
-                        {
-                            var enemy = pictureBoxList.Where(x => x.Left > item.Left && x.Left < item.Left + 35 && x.Top > item.Top && x.Top < item.Top + 35 && x.Name.StartsWith("kagit")).FirstOrDefault();
-                            if (enemy != null)
-                            {
 
-                                enemy.Name = "makas";
-                                enemy.Image = makas;
-                            }
+                        name = item.Name;
+                        switch (name)
+                        {
+                    
+                            case "kagit":
+                                var enemy = pictureBoxList.Where(x => x.Left > item.Left && x.Left < item.Left + 35 && x.Top > item.Top && x.Top < item.Top + 35 && x.Name.StartsWith("tas")).FirstOrDefault();
+                                if (enemy != null)
+                                {
+                                    enemy.Name = "kagit";
+                                    enemy.Image = kagit;
+                                }
+                                break;
+                            case "tas":
+                                enemy = pictureBoxList.Where(x => x.Left > item.Left && x.Left < item.Left + 35 && x.Top > item.Top && x.Top < item.Top + 35 && x.Name.StartsWith("makas")).FirstOrDefault();
+                                if (enemy != null)
+                                {
+                                    enemy.Name = "tas";
+                                    enemy.Image = tas;
+                                }
+                                break;
+                            case "makas":
+                                enemy = pictureBoxList.Where(x => x.Left > item.Left && x.Left < item.Left + 35 && x.Top > item.Top && x.Top < item.Top + 35 && x.Name.StartsWith("kagit")).FirstOrDefault();
+                                if (enemy != null)
+                                {
+                                    enemy.Name = "makas";
+                                    enemy.Image = makas;
+                                }
+                                break;
                         }
+
+                        //if (item.Name.StartsWith("kagit"))
+                        //{
+                        //    var enemy = pictureBoxList.Where(x => x.Left > item.Left && x.Left < item.Left + 35 && x.Top > item.Top && x.Top < item.Top + 35 && x.Name.StartsWith("tas")).FirstOrDefault();
+                        //    if (enemy != null)
+                        //    {
+                        //        enemy.Name = "kagit";
+                        //        enemy.Image = kagit;
+                        //    }
+                        //}
+                        //else if (item.Name.StartsWith("tas"))
+                        //{
+                        //    var enemy = pictureBoxList.Where(x => x.Left > item.Left && x.Left < item.Left + 35 && x.Top > item.Top && x.Top < item.Top + 35 && x.Name.StartsWith("makas")).FirstOrDefault();
+                        //    if (enemy != null)
+                        //    {
+                        //        enemy.Name = "tas";
+                        //        enemy.Image = tas;
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    var enemy = pictureBoxList.Where(x => x.Left > item.Left && x.Left < item.Left + 35 && x.Top > item.Top && x.Top < item.Top + 35 && x.Name.StartsWith("kagit")).FirstOrDefault();
+                        //    if (enemy != null)
+                        //    {
+
+                        //        enemy.Name = "makas";
+                        //        enemy.Image = makas;
+                        //    }
+                        //}
 
 
                     }
